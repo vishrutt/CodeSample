@@ -83,4 +83,15 @@ public class StudentController {
         return studentRepository.findByCourses_Id(courseId);
     }
 
+    @CrossOrigin
+    @RequestMapping(
+            path = {"/bycoursename/{name}"},
+            method = RequestMethod.GET,
+            produces = {"application/json", "application/xml"}
+    )
+    public List<Student> getStudentsbyCourseName(@PathVariable(value = "name")String courseId)
+    {
+        return studentRepository.findByCourses_Name(courseId);
+    }
+
 }
