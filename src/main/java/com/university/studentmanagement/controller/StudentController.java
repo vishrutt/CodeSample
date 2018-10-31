@@ -14,6 +14,7 @@ import java.util.List;
  * Created by Vishrut Trivedi
  */
 @RestController
+@CrossOrigin
 @RequestMapping("/students")
 public class StudentController {
 
@@ -71,12 +72,13 @@ public class StudentController {
         return ResponseEntity.ok().build();
     }
 
+    @CrossOrigin
     @RequestMapping(
-            path = {"/bycourseid/{courseId}"},
+            path = {"/bycourseid/{id}"},
             method = RequestMethod.GET,
             produces = {"application/json", "application/xml"}
     )
-    public List<Student> getStudentsbyCourseId(@PathVariable(value = "courseId")Long courseId)
+    public List<Student> getStudentsbyCourseId(@PathVariable(value = "id")Long courseId)
     {
         return studentRepository.findByCourses_Id(courseId);
     }
